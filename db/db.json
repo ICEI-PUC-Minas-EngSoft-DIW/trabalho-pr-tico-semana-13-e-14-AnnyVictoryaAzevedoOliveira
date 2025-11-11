@@ -44,15 +44,6 @@
       "categoria": "Conceito Básico",
       "sistema": "Call of Cthulhu",
       "imagem": "assets/img/mini.jpg"
-    },
-    {
-      "id": "59b1",
-      "titulo": "TESTE 2",
-      "descricao": "TESTE 2",
-      "conteudo": "Teste 2",
-      "categoria": "segundoteste",
-      "sistema": "segundoteste",
-      "imagem": "https://img.freepik.com/fotos-gratis/closeup-tiro-de-uma-linda-borboleta-com-texturas-interessantes-em-uma-flor-de-petalas-de-laranja_181624-7640.jpg?semt=ais_hybrid&w=740&q=80"
     }
   ]
 }
