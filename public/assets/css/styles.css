@@ -11,7 +11,7 @@ main {
 }
 
 body {
-    background: #121212 url('../img/fundo.jpg') no-repeat center center fixed;
+    background: #0d0d1a url('../img/fundo.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #f4f4f4;
     font-family: 'Trebuchet MS', sans-serif;

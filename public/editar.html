@@ -19,16 +19,20 @@
                 <li class="nav-item">
                     <a class="nav-link" style="color: #ffffff;" href="editar.html"><b>Gerenciar</b></a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #ffffff;" href="dados.html"><b>Visualizar Dados</b></a>
+                </li>
             </ul>
         </div>
     </header>
     <main class="container my-5">
-        <section class="mt-5 pt-5">
+        <section class="mb-5">
             <h2 class="mb-4 border-bottom pb-2" style="border-color:#9d4edd !important;">Gerenciamento</h2>
             <div class="artigo p-4 mb-4">
                 <h3>Adicionar / Editar Card</h3>
                 <form id="conceito-form">
-                    <input type="hidden" id="conceito-id" value=""> <div class="mb-3">
+                    <input type="hidden" id="conceito-id" value="">
+                    <div class="mb-3">
                         <label for="titulo" class="form-label">Título</label>
                         <input type="text" class="form-control" id="titulo" required>
                     </div>
@@ -55,8 +59,8 @@
                         <input type="url" class="form-control" id="imagem" required>
                     </div>
 
-                    <button type="submit" id="btn-submit-form" class="btn mt-3" 
-                            style="background-color: #9d4edd; color: #fff;">
+                    <button type="submit" id="btn-submit-form" class="btn mt-3"
+                        style="background-color: #9d4edd; color: #fff;">
                         Adicionar Conceito
                     </button>
                 </form>
@@ -75,7 +79,7 @@
                             </tr>
                         </thead>
                         <tbody id="tabela-conceitos-body">
-                            </tbody>
+                        </tbody>
                     </table>
                 </div>
             </div>
