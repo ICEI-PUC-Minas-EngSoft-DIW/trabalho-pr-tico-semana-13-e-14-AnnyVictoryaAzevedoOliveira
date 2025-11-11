@@ -9,15 +9,20 @@ Sugerimos o uso das seguintes ferramentas acessíveis: [FullCalendar](https://fu
 
 ## Informações do trabalho
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Anny Victorya Azevedo Oliveira
+- Matricula: 899228
+- Proposta de projeto escolhida:  Proposta 5
+- Breve descrição sobre seu projeto: Projeto dedicado ao universo dos RPGs, trazendo dicas para mestres e jogadores, sistemas criativos, análises de jogos e inspirações para campanhas.
 
 **Print da tela com a implementação**
 
 << Coloque aqui uma breve explicação da implementação feita nessa etapa>>
 
+Para essa etapa, foi escolhido o Chart.js. Para testar a implementação, criei mais duas classificações para os testes, os quais fizeram com que a apresentação dos dados no gráfico de setores mudasse, adequando-se à nova situação (imagem 2).
+
 <<  COLOQUE A IMAGEM TELA 1 AQUI >>
+![alt text](image.png)
 
 <<  COLOQUE A IMAGEM TELA 2 AQUI >>
+![alt text](image-1.png)
+![alt text](image-2.png)
