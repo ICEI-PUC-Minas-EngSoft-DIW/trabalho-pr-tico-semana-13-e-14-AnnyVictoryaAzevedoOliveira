@@ -1,0 +1,63 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+body {
+    background: #121212 url('../img/fundo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f4f4f4;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+header,
+footer {
+    background: rgba(20, 20, 20, 0.9);
+    border-color: #9d4edd !important;
+}
+
+h1,
+h2,
+h3 {
+    color: #a713fc;
+}
+
+.card p {
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    background: #9d4edd;
+    border-radius: .5rem;
+    color: #fff !important;
+}
+
+.artigo,
+.card {
+    background: rgba(30, 30, 30, 0.85);
+    border: 1px solid #9d4edd;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(157, 78, 221, 0.8);
+}
+
+.saiba_mais {
+    color: #ee3573;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.saiba_mais:hover {
+    color: #ff6699;
+}

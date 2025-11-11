@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Role & Play</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <header class="border-bottom shadow sticky-top">
+        <div class="container py-3 d-flex flex-wrap justify-content-between align-items-center">
+            <h1 class="fs-2 m-0">Role & Play</h1>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #ffffff;" aria-current="page" href="index.html"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #ffffff;" href="editar.html"><b>Gerenciar</b></a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main class="container my-5">
+        <section class="mt-5 pt-5">
+            <h2 class="mb-4 border-bottom pb-2" style="border-color:#9d4edd !important;">Gerenciamento</h2>
+            <div class="artigo p-4 mb-4">
+                <h3>Adicionar / Editar Card</h3>
+                <form id="conceito-form">
+                    <input type="hidden" id="conceito-id" value=""> <div class="mb-3">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input type="text" class="form-control" id="titulo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="descricao" class="form-label">Descrição Curta</label>
+                        <input type="text" class="form-control" id="descricao" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="conteudo" class="form-label">Conteúdo Completo</label>
+                        <textarea class="form-control" id="conteudo" rows="3" required></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="categoria" class="form-label">Categoria</label>
+                            <input type="text" class="form-control" id="categoria" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="sistema" class="form-label">Sistema/Conceito</label>
+                            <input type="text" class="form-control" id="sistema" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="imagem" class="form-label">URL da Imagem</label>
+                        <input type="url" class="form-control" id="imagem" required>
+                    </div>
+
+                    <button type="submit" id="btn-submit-form" class="btn mt-3" 
+                            style="background-color: #9d4edd; color: #fff;">
+                        Adicionar Conceito
+                    </button>
+                </form>
+            </div>
+
+            <div class="artigo p-4">
+                <h3>Conceitos Existentes</h3>
+                <div class="table-responsive">
+                    <table class="table table-dark table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Categoria</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabela-conceitos-body">
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-top text-center text-light py-4 mt-5">
+        <p class="mb-1">
+            &copy; 2025 Veridice RPG - Feito com dados, coragem e um toque de mistério.
+        </p>
+        <a href="https://discord.gg/zh7fHPgruR" class="saiba_mais me-3">Discord</a>
+        <a href="https://x.com/VeridiceRPG" class="saiba_mais">Twitter</a>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/scripts/app.js"></script>
+</body>
+
+</html>

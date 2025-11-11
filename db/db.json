@@ -1,18 +1,31 @@
 {
-  "usuarios": [
+  "conceitos": [
     {
-      "id": "187cb7e5-e097-4224-8bc7-b610c855e2b1",
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "id": "2",
+      "titulo": "Fichas",
+      "descricao": "O registro completo de cada personagem: atributos, habilidades, equipamentos e história.",
+      "conteudo": "A ficha é a representação física do personagem no jogo. É onde o jogador anota tudo, desde a força do seu herói até o número de moedas de ouro que ele possui. É vital para a continuidade da história.",
+      "categoria": "Conceito Básico",
+      "sistema": "Universal",
+      "imagem": "assets/img/ficharpg.jpg"
     },
     {
-      "id": "ec37c83d-4b7f-458d-9e10-3fda7d37cd3e",
-      "login": "user",
-      "senha": "123",
-      "nome": "Usuario Comum",
-      "email": "user@abc.com"
+      "id": "3",
+      "titulo": "Narrador (Mestre)",
+      "descricao": "Responsável por guiar a história, descrever o mundo e interpretar personagens secundários.",
+      "conteudo": "Conhecido como Mestre (GM) ou Narrador, ele é o árbitro final das regras e o principal contador de histórias. Sem o Mestre, não há mundo para explorar nem aventuras para viver.",
+      "categoria": "Função Essencial",
+      "sistema": "Universal",
+      "imagem": "assets/img/mestre.jpg"
+    },
+    {
+      "id": "592e",
+      "titulo": "TESTE",
+      "descricao": "TESTE",
+      "conteudo": "ssssssssssssssssssssssss",
+      "categoria": "TESTE",
+      "sistema": "TESTE",
+      "imagem": "https://img.freepik.com/fotos-gratis/closeup-tiro-de-uma-linda-borboleta-com-texturas-interessantes-em-uma-flor-de-petalas-de-laranja_181624-7640.jpg?semt=ais_hybrid&w=740&q=80"
     }
   ]
 }
