@@ -1,39 +1,66 @@
-const API_URL = "http://localhost:3000/conceitos"; 
-let dados = []; 
-let myCharts = {}; 
+const API_URL = "http://localhost:3000/conceitos";
+const FALLBACK_URL = "db.json"; 
+let dados = [];
+let myCharts = {};
+
 function generateColors(count) {
-    const colors = [ 
-        '#ee3573', 
-        '#9d4edd', 
-        '#13fca7', 
-        '#ff99c8', 
-        '#d181ff', 
-        '#4edd9d', 
-        '#e0b8ff', 
-        '#ff6699', 
-        '#fc7a13', 
+    const colors = [
+        '#ee3573',
+        '#9d4edd',
+        '#13fca7',
+        '#ff99c8',
+        '#d181ff',
+        '#4edd9d',
+        '#e0b8ff',
+        '#ff6699',
+        '#fc7a13',
     ];
     return Array.from({ length: count }, (_, i) => colors[i % colors.length]);
 }
 
 async function carregarDados() {
+    let sucesso = false;
+    let urlUsada = API_URL;
     try {
         const resposta = await fetch(API_URL);
-        if (!resposta.ok) {
-            throw new Error(`Erro HTTP: ${resposta.status}`);
-        }
+        if (!resposta.ok) throw new Error(`Erro HTTP: ${resposta.status}`);
         dados = await resposta.json();
+        sucesso = true;
+        console.log(" Dados carregados com sucesso do JSON Server.");
+    } catch (erro) {
+        console.warn(` Erro ao carregar do JSON Server (${API_URL}). Tentando Fallback...`, erro.message);
+        urlUsada = FALLBACK_URL;
+        try {
+             const respostaFallback = await fetch(FALLBACK_URL);
+             if (!respostaFallback.ok) throw new Error(`Erro HTTP: ${respostaFallback.status}`);
+             const dataFallback = await respostaFallback.json();
+             dados = dataFallback.conceitos || []; 
+             sucesso = true;
+             console.log("Dados carregados com sucesso do arquivo estático (Fallback).");
+        } catch (erroFallback) {
+             console.error("Erro fatal: Não foi possível carregar os dados de forma estática.", erroFallback);
+             mostrarAlertaDadosVazios();
+             return;
+        }
+    }
+
+    if (sucesso) {
         renderizarCards();
         renderizarDetalhes();
         renderizarTabelaGerenciamento();
-        renderizarGraficos(); 
-    } catch (erro) {
-        console.error("Erro ao carregar dados:", erro);
-        if (document.getElementById('grafico-categoria')) {
-             document.getElementById('alerta-dados').style.display = 'block';
-        }
+        renderizarGraficos();
+        const alerta = document.getElementById('alerta-dados');
+        if (alerta) alerta.style.display = 'none';
     }
 }
+
+function mostrarAlertaDadosVazios() {
+    const alerta = document.getElementById('alerta-dados');
+    if (alerta) alerta.style.display = 'block';
+    const graficoContainer = document.getElementById('grafico-categoria');
+    if (graficoContainer) graficoContainer.style.display = 'none';
+}
+
 
 function renderizarCards() {
     const containerCards = document.getElementById('cards-container');
@@ -62,11 +89,10 @@ function renderizarCards() {
 
 function renderizarDetalhes() {
     const urlParams = new URLSearchParams(window.location.search);
-    const idItem = parseInt(urlParams.get('id'));
+    const idItem = urlParams.get('id'); 
     const detalhesContainer = document.getElementById('detalhes-item');
-
     if (detalhesContainer && idItem) { 
-        const item = dados.find(d => d.id === idItem);
+        const item = dados.find(d => d.id == idItem); 
 
         if (item) {
             detalhesContainer.innerHTML = `
@@ -107,8 +133,8 @@ function renderizarTabelaGerenciamento() {
                     <td>${item.titulo}</td>
                     <td>${item.categoria}</td>
                     <td>
-                        <button class="btn btn-sm btn-warning me-2" onclick="prepararEdicao(${item.id})">Editar</button>
-                        <button class="btn btn-sm btn-danger" onclick="deletarConceito(${item.id})">Excluir</button>
+                        <button class="btn btn-sm btn-warning me-2" onclick="prepararEdicao('${item.id}')">Editar</button>
+                        <button class="btn btn-sm btn-danger" onclick="deletarConceito('${item.id}')">Excluir</button>
                     </td>
                 </tr>
             `;
@@ -127,6 +153,9 @@ function configurarFormulario() {
 async function prepararEdicao(id) {
     try {
         const resposta = await fetch(`${API_URL}/${id}`);
+        if (!resposta.ok) {
+             throw new Error("API não está respondendo. Não é possível editar.");
+        }
         const item = await resposta.json();
 
         document.getElementById('conceito-id').value = item.id;
@@ -143,7 +172,7 @@ async function prepararEdicao(id) {
         mostrarMensagem('Edição pronta', `Pronto para editar o conceito "${item.titulo}".`, 'alert-warning');
     } catch (error) {
         console.error("Erro ao preparar edição:", error);
-        mostrarMensagem('Erro', 'Não foi possível carregar os dados para edição.', 'alert-danger');
+        mostrarMensagem('Erro', 'Não foi possível carregar os dados para edição. O JSON Server deve estar rodando.', 'alert-danger');
     }
 }
 
@@ -183,12 +212,12 @@ async function adicionarConceito(novo) {
             throw new Error(`Erro ao adicionar: ${resposta.status}`);
         }
         const data = await resposta.json();
-        console.log("✅ Conceito adicionado:", data);
+        console.log("Conceito adicionado:", data);
         mostrarMensagem('Sucesso', `Conceito "${data.titulo}" adicionado com sucesso!`, 'alert-success');
         carregarDados(); 
     } catch (erro) {
         console.error("Erro ao adicionar:", erro);
-        mostrarMensagem('Erro', `Erro ao adicionar conceito. Verifique o console.`, 'alert-danger');
+        mostrarMensagem('Erro', `Erro ao adicionar conceito. Verifique o console. O JSON Server deve estar rodando.`, 'alert-danger');
     }
 }
 
@@ -208,7 +237,7 @@ async function editarConceito(id, atualizado) {
         carregarDados(); 
     } catch (erro) {
         console.error("Erro ao atualizar:", erro);
-        mostrarMensagem('Erro', `Erro ao atualizar conceito. Verifique o console.`, 'alert-danger');
+        mostrarMensagem('Erro', `Erro ao atualizar conceito. Verifique o console. O JSON Server deve estar rodando.`, 'alert-danger');
     }
 }
 
@@ -219,18 +248,32 @@ async function deletarConceito(id) {
             if (!resposta.ok) {
                 throw new Error(`Erro ao deletar: ${resposta.status}`);
             }
-            console.log(`✅ Conceito ${id} deletado.`);
+            console.log(`Conceito ${id} deletado.`);
             mostrarMensagem('Sucesso', `Conceito (ID: ${id}) deletado com sucesso!`, 'alert-success');
             carregarDados(); 
         } catch (erro) {
             console.error("Erro ao deletar:", erro);
-            mostrarMensagem('Erro', `Erro ao deletar conceito. Verifique o console.`, 'alert-danger');
+            mostrarMensagem('Erro', `Erro ao deletar conceito. O JSON Server deve estar rodando.`, 'alert-danger');
         }
     }
 }
 
 function mostrarMensagem(titulo, mensagem, tipo) {
     console.log(`[${titulo} | ${tipo.replace('alert-', '').toUpperCase()}] ${mensagem}`);
+}
+
+function processarDadosParaGrafico(campo) {
+    const contagem = dados.reduce((acc, item) => {
+        const valor = item[campo];
+        acc[valor] = (acc[valor] || 0) + 1;
+        return acc;
+    }, {});
+
+    const labels = Object.keys(contagem);
+    const data = Object.values(contagem);
+    const backgroundColors = generateColors(labels.length);
+
+    return { labels, data, backgroundColors };
 }
 
 function processarDadosParaGrafico(campo) {

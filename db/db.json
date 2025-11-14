@@ -1,7 +1,7 @@
 {
   "conceitos": [
     {
-      "id": 2,
+      "id": "2",
       "titulo": "Fichas",
       "descricao": "O registro completo de cada personagem: atributos, habilidades, equipamentos e história.",
       "conteudo": "A ficha é a representação física do personagem no jogo. É onde o jogador anota tudo, desde a força do seu herói até o número de moedas de ouro que ele possui. É vital para a continuidade da história.",
@@ -10,7 +10,7 @@
       "imagem": "assets/img/ficharpg.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "titulo": "Narrador (Mestre)",
       "descricao": "Responsável por guiar a história, descrever o mundo e interpretar personagens secundários.",
       "conteudo": "Conhecido como Mestre (GM) ou Narrador, ele é o árbitro final das regras e o principal contador de histórias. Sem o Mestre, não há mundo para explorar nem aventuras para viver.",
@@ -19,7 +19,7 @@
       "imagem": "assets/img/mestre.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "Perícias e Testes",
       "descricao": "A forma como o jogo decide se a ação do personagem é bem-sucedida ou não.",
       "conteudo": "Perícias são habilidades treinadas (como Furtividade ou Persuasão). Testes geralmente envolvem rolar dados e somar um modificador, comparando o resultado com uma dificuldade definida pelo Mestre.",
@@ -28,7 +28,7 @@
       "imagem": "assets/img/fundo.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "Magia (Spellcasting)",
       "descricao": "O sistema que rege o uso de poderes arcanos e divinos no mundo de jogo.",
       "conteudo": "A magia é um pilar em muitos RPGs. Pode ser dividida em escolas, círculos ou níveis, dependendo do sistema, e geralmente consome recursos do personagem, como Pontos de Magia.",
@@ -37,7 +37,7 @@
       "imagem": "assets/img/rp.png"
     },
     {
-      "id": 6,
+      "id": "6",
       "titulo": "Cenário de Campanha",
       "descricao": "O mundo onde a história se passa, incluindo sua geografia, história e cultura.",
       "conteudo": "Um bom cenário de campanha fornece contexto e inspiração para as aventuras. Pode ser um reino de fantasia, uma metrópole futurista ou um universo de horror cósmico.",
